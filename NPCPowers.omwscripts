@@ -1,0 +1,2 @@
+LOAD: scripts/NPCPowers/load.lua
+NPC: scripts/NPCPowers/npc.lua
