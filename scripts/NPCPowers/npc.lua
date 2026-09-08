@@ -99,7 +99,7 @@ return {
         end,
     },
     interfaceName = C.namespace,
-    interf = {
+    interface = {
         addPower = addPower,
         removePower = removePower,
         getCurrentPowers = function()
