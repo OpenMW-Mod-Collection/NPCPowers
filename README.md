@@ -35,7 +35,7 @@ I.NPCPowers.addPower(powerId)
 ---@return boolean          Was it successful
 I.NPCPowers.removePower(powerId)
 
----@return table<string, string>    Lookup table of all current Fake Powers of an NPC and their statuses
+---@return table<string, string>    Lookup table of all current Fake Powers of an NPC and their statuses (ready, cooldown)
 I.NPCPowers.getCurrentPowers()
 ```
 
