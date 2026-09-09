@@ -27,6 +27,8 @@ local dead = types.Actor.isDead(self)
 local selfFakePowers = {}
 local powerCooldown = time.day
 
+---@param powerId string
+---@return boolean
 local function isValidPowerId(powerId)
     local spellRecords = core.magic.spells.records
     if spellRecords[powerId] and spellRecords[powerId].type == core.magic.SPELL_TYPE.Power then
@@ -37,6 +39,8 @@ local function isValidPowerId(powerId)
     end
 end
 
+---@param powerId string
+---@return boolean
 local function addPower(powerId)
     if dead or not isValidPowerId(powerId) then
         return false
@@ -59,6 +63,22 @@ local powerCooldownPassed = time.registerTimerCallback(
     end
 )
 
+---@param powerId string
+---@param delay number
+---@return boolean
+local function addPowerDelayed(powerId, delay)
+    if dead or not isValidPowerId(powerId) then
+        return false
+    end
+
+    local fakePowerId = C.fakePowerPrefix .. powerId
+    selfFakePowers[fakePowerId] = powerStatus.cooldown
+    time.newGameTimer(delay, powerCooldownPassed, fakePowerId)
+    return true
+end
+
+---@param powerId string
+---@return boolean
 local function removePower(powerId)
     local fakePowerId = C.fakePowerPrefix .. powerId
     if not isValidPowerId(powerId) or not selfFakePowers[fakePowerId] then
@@ -107,6 +127,7 @@ return {
     interfaceName = C.namespace,
     interface = {
         addPower = addPower,
+        addPowerDelayed = addPowerDelayed,
         removePower = removePower,
         getCurrentPowers = function()
             return selfFakePowers

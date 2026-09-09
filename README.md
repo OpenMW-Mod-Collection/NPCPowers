@@ -33,6 +33,11 @@ All Fake Powers can be identified by `fakepower_` prefix. For example:
 I.NPCPowers.addPower(powerId)
 
 ---@param powerId string    Real Power id
+---@param delay number      Delay before giving the NPC Fake Power
+---@return boolean          Was it successful
+I.NPCPowers.addPowerDelayed(powerId, delay)
+
+---@param powerId string    Real Power id
 ---@return boolean          Was it successful
 I.NPCPowers.removePower(powerId)
 
