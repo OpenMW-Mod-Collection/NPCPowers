@@ -7,6 +7,12 @@ local time = require("openmw_aux.time")
 
 local C = require("scripts.NPCPowers.utils.consts")
 
+-- anticheese
+local selfRecord = types.NPC.records[self.recordId]
+if not selfRecord or selfRecord.servicesOffered.Spells then
+    return
+end
+
 local selfSpells = types.Actor.spells(self)
 local stopKeys = {
     ["self stop"] = true,

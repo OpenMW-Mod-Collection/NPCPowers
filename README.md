@@ -14,6 +14,7 @@ What this framework does:
 What this framework doesn't do:
 
 - Give Fake Powers to Creatures - there is no reliable way of tracking their spellcasts
+- Give Fake Powers to spell merchants - to prevent players from obtaining Fake Powers
 
 ## For Modders
 
