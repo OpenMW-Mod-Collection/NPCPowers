@@ -49,6 +49,16 @@ I.NPCPowers.getCurrentPowers()
 
 **Context: NPC**
 
+#### Received
+
+```lua
+--- Equivalent to I.NPCPowers.addPower()
+---@param powerId string    Real Power id
+NPCPowers_addPower
+```
+
+#### Sent
+
 ```lua
 --- Triggered when an NPC uses their Fake Power
 ---@return string    Fake Power id

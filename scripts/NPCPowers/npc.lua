@@ -123,6 +123,7 @@ return {
             dead = true
             selfFakePowers = {}
         end,
+        NPCPowers_addPower = addPower,
     },
     interfaceName = C.namespace,
     interface = {
