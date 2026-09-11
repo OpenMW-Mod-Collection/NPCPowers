@@ -124,6 +124,9 @@ return {
             selfFakePowers = {}
         end,
         NPCPowers_addPower = addPower,
+        NPCPowers_addPowerDelayed = function(data)
+            addPowerDelayed(data.powerId, data.delay)
+        end
     },
     interfaceName = C.namespace,
     interface = {

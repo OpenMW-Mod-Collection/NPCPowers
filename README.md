@@ -55,6 +55,14 @@ I.NPCPowers.getCurrentPowers()
 --- Equivalent to I.NPCPowers.addPower()
 ---@param powerId string    Real Power id
 NPCPowers_addPower
+
+---@class NPCPowerDelayedArgs
+---@field powerId string
+---@field delay number
+
+--- Equivalent to I.NPCPowers.addPowerDelayed()
+---@param args NPCPowerDelayedArgs
+NPCPowers_addPowerDelayed
 ```
 
 #### Sent
