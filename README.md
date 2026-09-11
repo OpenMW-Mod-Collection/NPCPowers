@@ -1,6 +1,6 @@
 # NPC Powers Framework (OpenMW)
 
-A framework for giving NPCs Power-type spells.
+A framework for giving NPCs Powers. Kinda.
 
 In vanilla, NPCs can't cast Powers at all, but this framework fakes it with free spells that get removed after being cast once.
 
