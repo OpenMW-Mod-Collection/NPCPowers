@@ -81,6 +81,8 @@ NPCPowers_powerCooldownPassed
 
 Compatible with any mod that adds, changes, or removes Powers.
 
+Compatible with [Oblivion Style Spellcasting](https://www.nexusmods.com/morrowind/mods/58653).
+
 ## Requirements
 
 OpenMW 0.51 or newer.

@@ -15,9 +15,26 @@ end
 
 local selfSpells = types.Actor.spells(self)
 local stopKeys = {
-    ["self stop"] = true,
-    ["touch stop"] = true,
-    ["target stop"] = true,
+    vanilla = {
+        ["self stop"] = true,
+        ["touch stop"] = true,
+        ["target stop"] = true,
+    },
+    ossc = {
+        ["stop"] = true,
+    }
+}
+local anims = {
+    spellcast = stopKeys.vanilla,
+    quickcast = stopKeys.ossc,
+    quickbuff = stopKeys.ossc,
+    qcconj    = stopKeys.ossc,
+    qctouch   = stopKeys.ossc,
+    qcalt     = stopKeys.ossc,
+    qcill     = stopKeys.ossc,
+    qcsnap    = stopKeys.ossc,
+    qcdrain   = stopKeys.ossc,
+    qcskrow   = stopKeys.ossc,
 }
 local powerStatus = {
     ready = "ready",
@@ -90,9 +107,7 @@ local function removePower(powerId)
     return true
 end
 
-I.AnimationController.addTextKeyHandler('spellcast', function(groupname, key)
-    if not stopKeys[key] then return end
-
+local function spellCasted()
     local currSpell = types.Actor.getSelectedSpell(self)
     if not currSpell or not selfFakePowers[currSpell.id] then return end
 
@@ -100,7 +115,14 @@ I.AnimationController.addTextKeyHandler('spellcast', function(groupname, key)
     selfFakePowers[currSpell.id] = powerStatus.cooldown
     time.newGameTimer(powerCooldown, powerCooldownPassed, currSpell.id)
     self:sendEvent(C.namespace .. "_powerUsed", currSpell.id)
-end)
+end
+
+for anim, animStopKeys in pairs(anims) do
+    I.AnimationController.addTextKeyHandler(anim, function (groupname, key)
+        if not animStopKeys[key] then return end
+        spellCasted()
+    end)
+end
 
 local function onSave()
     return {
